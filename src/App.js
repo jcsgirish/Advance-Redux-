@@ -4,6 +4,9 @@ import Cart from './components/Cart/Cart';
 import Layout from './components/Layout/Layout';
 import Products from './components/Shop/Products';
 import Card from './components/UI/Card';
+import 'bootstrap/dist/css/bootstrap.css';
+
+
 
 function App() {
   const cardShow = useSelector(state => state.cart.cardShow);
@@ -18,6 +21,7 @@ function App() {
         setSuccessShow(false);
         setProcessShow(true);
         let responce = await fetch(
+
           'https://redux-d8c83-default-rtdb.firebaseio.com//cart.json',
           {
             method: 'PUT',
@@ -49,9 +53,9 @@ function App() {
 
   return (
     <Fragment>
-      {successShow && <div className='bg-success'><Card className="text-light bg-success w-100 h4">Success!Sent Cart data successfully!!!</Card></div>}
-      {errorShow && <div className='bg-danger'><Card className="text-light bg-danger h4">Error!Sending data failed!!!</Card></div>}
-      {processShow && <div className='bg-primary'><Card className="text-light bg-primary h4">Sending...Sending cart data!!!</Card></div>}
+      {successShow && <div className='bg-success'><Card className="text-light bg-success w-100 h4">Success!Sent Cart data successfully!</Card></div>}
+      {errorShow && <div className='bg-danger'><Card className="text-light bg-danger h4">Error!Sending data failed!</Card></div>}
+      {processShow && <div className='bg-primary'><Card className="text-light bg-primary h4">Sending... Sending cart data!</Card></div>}
       <Layout>
         {cardShow && <Cart />}
         <Products />
